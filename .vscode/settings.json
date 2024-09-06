@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "stdlib.h": "c",
+        "discord_rpc.h": "c",
+        "dllinc.h": "c"
+    }
+}
