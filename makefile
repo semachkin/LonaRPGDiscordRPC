@@ -7,7 +7,4 @@ FLAGS := -Wall -m32
 
 entry:
 	$(GCC) $(FLAGS) -c dllmain.c
-	$(GCC) $(FLAGS) -shared dllmain.o -o $(MASK)
-	@del $(DLL)
-	@ren $(MASK) $(DLL)
-	@del dllmain.o
+	$(GCC) $(FLAGS) -shared dllmain.o -o $(DLL)

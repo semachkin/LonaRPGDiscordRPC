@@ -1,10 +1,4 @@
-# $game_system.menu_disabled
-# $game_player.actor.stat["SexEventLast"]
-# "#{$game_date.date[0]}.#{$game_date.date[1]}.#{$game_date.date[2]}"
-
 module Discord
-
-    attr_accessor :gameState
 
     MOD_DIR = File.dirname(__FILE__)
     DLL_PATH = "#{MOD_DIR}/lonarpg_rpc.dll"
@@ -50,6 +44,10 @@ module Discord
         DISCORD_UPDATE_W32.call(@ver, @lvl, @gameState, @race, @date)
     end
 
+    def self.gameState=(state)
+        @gameState = state
+    end
+
     DISCORD_INIT_W32.call
 end
 
@@ -66,7 +64,6 @@ class Scene_Map < Scene_Base
     alias discord_rpc_startdd start
 	def start
 		discord_rpc_startdd
-        print"MAPMAPMAPMAPMAP\n"
         Discord.gameState = $game_system.menu_disabled ? 0 : 1
         Discord.update
 	end
@@ -77,10 +74,8 @@ class Game_Actor < Game_Battler
     
     def set_action_state(action_state, force=false)
 		origsetstate(action_state, force)
-        print("STATESTATE #{action_state}")
-        if action_state == "sex"
+        if action_state.to_s == "sex"
             Discord.gameState = 2
-            print("SEX")
         else
             Discord.gameState = 1
         end

@@ -41,6 +41,7 @@ DLL_EXPORT void discordUpdate(string ver, UINT lvl, enumt gameState, enumt race,
         state = "In Game";
     } else if (gameState == GAME_SEX) {
         state = "Has Sex";
+        discordPresence.smallImageKey = "heart_baloon";
     }
 
     discordPresence.startTimestamp = starttime;
