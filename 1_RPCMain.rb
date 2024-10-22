@@ -18,7 +18,7 @@ module Discord
         @lvl = 0
         if $game_player.actor
             @lvl = $game_player.actor.level
-            @racestr = $game_player.actor.record_lona_race
+            @racestr = $game_player.actor.race
 
             case @racestr
             when "PreDeepone"
